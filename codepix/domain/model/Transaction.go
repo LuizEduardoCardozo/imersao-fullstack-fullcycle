@@ -9,10 +9,10 @@ import (
 )
 
 const (
-	TransacionPending    string = "pending"
-	TransactionCompleted string = "completed"
-	TransactionError     string = "error"
-	TransacionConfirmed  string = "confirmed"
+	transacionPending    string = "pending"
+	transactionCompleted string = "completed"
+	transactionError     string = "error"
+	transacionConfirmed  string = "confirmed"
 )
 
 // Transacion model
@@ -50,7 +50,7 @@ func (transaction *Transacion) isValid() error {
 		return errors.New("Tranfer amount incompatible")
 	}
 
-	if tStatus != TransacionConfirmed && tStatus != TransacionPending && tStatus != TransactionCompleted && tStatus != TransactionError {
+	if tStatus != transacionConfirmed && tStatus != transacionPending && tStatus != transactionCompleted && tStatus != transactionError {
 		return errors.New("Invalid type of status")
 	}
 
@@ -74,7 +74,7 @@ func NewTransaction(accountFrom *Account, amount float64, pixKeyTo *PixKey, desc
 		Amount:      amount,
 		PixKeyTo:    pixKeyTo,
 		Description: description,
-		Status:      TransacionPending,
+		Status:      transacionPending,
 	}
 
 	transaction.ID = uuid.NewV4().String()
@@ -93,7 +93,7 @@ func NewTransaction(accountFrom *Account, amount float64, pixKeyTo *PixKey, desc
 // Completed change the transaction status for "completed"
 func (transaction *Transacion) Completed() error {
 
-	transaction.Status = TransactionCompleted
+	transaction.Status = transactionCompleted
 	transaction.UpdatedAt = time.Now()
 
 	err := transaction.isValid()
@@ -104,7 +104,7 @@ func (transaction *Transacion) Completed() error {
 // Confirm change the transaction status for "confirmed"
 func (transaction *Transacion) Confirm() error {
 
-	transaction.Status = TransacionConfirmed
+	transaction.Status = transacionConfirmed
 	transaction.UpdatedAt = time.Now()
 
 	err := transaction.isValid()
@@ -115,7 +115,7 @@ func (transaction *Transacion) Confirm() error {
 // Cancel change the transaction status for "canceled"
 func (transaction *Transacion) Cancel(description string) error {
 
-	transaction.Status = TransactionError
+	transaction.Status = transactionError
 	transaction.UpdatedAt = time.Now()
 	transaction.Description = description
 

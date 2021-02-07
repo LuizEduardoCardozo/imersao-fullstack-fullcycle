@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package github.com.LuizEduardoCardozo.codepix;
 
-option go_package = "protofiles;pb"
+option go_package = "protofiles;pb";
 
 message PixKeyRegistration {
     string kind = 1;
@@ -36,4 +36,9 @@ message PixKeyCreatedResult {
     string id = 1;
     string status = 2;
     string error = 3;
+}
+
+service PixService {
+    rpc RegisterPixKey (PixKeyRegistration) returns (PixKeyCreatedResult) {};
+    rpc Find (PixKey) returns (PixKeyInfo) {};
 }

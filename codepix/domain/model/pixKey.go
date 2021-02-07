@@ -13,8 +13,8 @@ type PixKeyInterfaceRepository interface {
 	RegisterKey(pixKey *PixKey) (*PixKey, error)
 	FindKeyByKind(key string, kind string) (*PixKey, error)
 	AddBank(bank *Bank) (*Bank, error)
-	addAccount(account *Account) (*Account, error)
-	findAccound(id string) (*Account, error)
+	AddAccount(account *Account) (*Account, error)
+	FindAccount(id string) (*Account, error)
 }
 
 // PixKey Model

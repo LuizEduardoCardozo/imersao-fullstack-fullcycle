@@ -5,12 +5,10 @@ import (
 
 	"github.com/LuizEduardoCardozo/imercao-fullcycle/codepix-go/application/grpc"
 	"github.com/LuizEduardoCardozo/imercao-fullcycle/codepix-go/infra/db"
-	"github.com/jinzhu/gorm"
 	"github.com/spf13/cobra"
 )
 
 var portNumber int
-var database *gorm.DB
 
 var gprcCmd = &cobra.Command{
 	Use:   "gprc",

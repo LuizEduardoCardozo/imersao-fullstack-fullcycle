@@ -43,7 +43,6 @@ type Transactions struct {
 func (transaction *Transacion) isValid() error {
 
 	_, err := govalidator.ValidateStruct(transaction)
-
 	tAmount := transaction.Amount
 	tStatus := transaction.Status
 	tID := transaction.ID

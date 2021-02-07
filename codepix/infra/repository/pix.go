@@ -25,27 +25,40 @@ type PixKeyRepositoryDB struct {
 }
 
 // AddBank add a new bank to database
-func (r PixKeyRepositoryDB) AddBank(bank *model.Bank) error {
+func (r PixKeyRepositoryDB) AddBank(bank *model.Bank) (*model.Bank, error) {
 
 	err := r.DB.Create(bank).Error
-	return err
 
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, nil
 }
 
 // AddAccount add a new account to database
-func (r PixKeyRepositoryDB) AddAccount(account *model.Account) error {
+func (r PixKeyRepositoryDB) AddAccount(account *model.Account) (*model.Account, error) {
 
 	err := r.DB.Create(account).Error
-	return err
+
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, nil
 
 }
 
 // RegisterKey registar a new pix key to database
-func (r PixKeyRepositoryDB) RegisterKey(pixKey *model.PixKey) error {
+func (r PixKeyRepositoryDB) RegisterKey(pixKey *model.PixKey) (*model.PixKey, error) {
 
 	err := r.DB.Create(pixKey).Error
-	return err
 
+	if err != nil {
+		return nil, err
+	}
+
+	return nil, nil
 }
 
 // FindKeyByKind finds a registred key, using key, based on kind

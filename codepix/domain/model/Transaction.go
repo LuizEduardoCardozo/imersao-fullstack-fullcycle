@@ -19,7 +19,7 @@ const (
 type Transacion struct {
 	Base              `valid:"required"`
 	AccountFrom       *Account `valid:"-"`
-	AccountFromID     string   `gorm:"column:account_from_id;type:uui;not null" valid:"notnull"`
+	AccountFromID     string   `gorm:"column:account_from_id;type:uuid;not null" valid:"notnull"`
 	Amount            float64  `json:"amount" gorm:"type:float" vald:"notnull"`
 	PixKeyTo          *PixKey  `valid:"-"`
 	PixKeyToID        string   `gorm:"column:pix_key_id_to;type:uuid;not null" valid:"notnull"`
